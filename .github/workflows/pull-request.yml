@@ -1,4 +1,4 @@
-name: CI ON PULL REQUEST OPENED
+name: CI ON PULL REQUEST
 
 on:
   pull_request:
@@ -28,11 +28,11 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Run Type Check
+      - name: Run Type Testing
         run: npm run test:type
 
       - name: Run Build Storybook
         run: npm run build:storybook
 
-      - name: Run Build
+      - name: Run Build React
         run: npm run build:react
