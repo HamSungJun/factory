@@ -5,6 +5,7 @@ on:
 
 jobs:
   ci:
+    timeout-minutes: 60
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -28,8 +29,14 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Run Type Check
+      - name: Install E2E Dependencies
+        run: npx playwright install --with-deps
+
+      - name: Run Type Testing
         run: npm run test:type
+
+      - name: Run E2E Testing
+        run: npm run test:e2e
 
       - name: Run Build Storybook
         run: npm run build:storybook

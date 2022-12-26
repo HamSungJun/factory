@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 .eslintcache
+/tests-examples/
+/test-results/
+/playwright-report/
+/playwright/.cache/
