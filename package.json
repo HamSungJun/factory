@@ -66,6 +66,6 @@
     "vite": "^4.0.0"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "eslint --cache"
+    "src/**/*.{ts,tsx}": "eslint --cache --max-warnings=0"
   }
 }
