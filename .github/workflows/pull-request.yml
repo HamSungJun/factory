@@ -28,8 +28,11 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Run Type Testing
+      - name: Run Type Test
         run: npm run test:type
+
+      - name: Run Unit Test
+        run: npm run test:unit
 
       - name: Run Build Storybook
         run: npm run build:storybook

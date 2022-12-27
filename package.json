@@ -10,7 +10,7 @@
     "build:storybook": "build-storybook",
     "test:type": "tsc",
     "test:e2e": "npx playwright test",
-    "test:unit": "jest",
+    "test:unit": "jest --passWithNoTests",
     "preview": "vite preview",
     "prepare": "husky install"
   },
