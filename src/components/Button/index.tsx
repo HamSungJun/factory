@@ -1,7 +1,26 @@
-export default function Button() {
-  return (
-    <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
-      Button
+import {
+  AriaAttributes,
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  forwardRef,
+} from "react";
+import { twMerge } from "tailwind-merge";
+
+interface IButton
+  extends DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    AriaAttributes {}
+
+const Button = forwardRef<HTMLButtonElement, IButton>(
+  ({ className, children, ...props }, ref) => (
+    <button {...props} className={twMerge("border p-5", className)} ref={ref}>
+      {children}
     </button>
-  );
-}
+  )
+);
+
+Button.displayName = "Button";
+
+export default Button;

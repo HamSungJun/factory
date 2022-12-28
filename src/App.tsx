@@ -1,5 +1,14 @@
 import "@app/index.css";
+import { useRef } from "react";
+
+import Button from "@app/components/Button";
 
 export default function App() {
-  return <div className="text-red-500">App</div>;
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  console.log({ buttonRef });
+  return (
+    <div>
+      <Button>Button</Button>
+    </div>
+  );
 }
