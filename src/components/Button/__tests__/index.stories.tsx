@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Button from "@app/components/Button";
 
 export default {
-  title: "Button",
+  title: "Components/Button",
   component: Button,
   args: {
     onClick: action("onClick"),
@@ -42,5 +42,5 @@ Rounded.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
-  className: "border-[#ccc] bg-[#ccc] text-white",
+  className: "border-[#ccc] bg-[#ccc] text-white cursor-not-allowed",
 };
