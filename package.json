@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:react": "vite",
+    "dev:react": "vite --host",
     "dev:storybook": "start-storybook -p 6006",
     "build:react": "vite build",
     "build:storybook": "build-storybook",

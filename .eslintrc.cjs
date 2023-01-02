@@ -31,6 +31,7 @@ module.exports = {
     "@typescript-eslint/triple-slash-reference": 0,
     "@typescript-eslint/consistent-type-assertions": 0,
     "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/ban-types": 0,
     "import/order": [
       "warn",
       {
