@@ -12,11 +12,20 @@ const FRUIT_IMAGE_URLS = [
 
 export default function App() {
   return (
-    <div>
-      <Carousel>
+    <div className="h-[200px] w-[500px]">
+      <Carousel
+        classes={{
+          root: "w-[500px] h-[300px] mx-auto",
+          slider: "snap-x",
+        }}
+      >
         {FRUIT_IMAGE_URLS.map((imageUrl) => (
-          <Carousel.Slide key={imageUrl}>
-            <img src={imageUrl} alt="fruit-image" />
+          <Carousel.Slide key={imageUrl} className="snap-start">
+            <img
+              className="h-full w-full object-cover"
+              src={imageUrl}
+              alt="fruit-image"
+            />
           </Carousel.Slide>
         ))}
       </Carousel>

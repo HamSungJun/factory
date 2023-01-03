@@ -1,17 +1,33 @@
 import { PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
 
-import "@app/components/Carousel/index.css";
+import { WithClassname } from "@app/components/types";
 
-function Carousel({ children }: PropsWithChildren<{}>) {
+interface ICarousel extends PropsWithChildren<{}> {
+  classes?: {
+    root?: string;
+    slider?: string;
+  };
+}
+
+function Carousel({ classes, children }: ICarousel) {
   return (
-    <article className="carousel">
-      <div className="carousel__slides">{children}</div>
+    <article className={twMerge("h-full w-full", classes?.root)}>
+      <div className={twMerge("flex h-full overflow-auto", classes?.slider)}>
+        {children}
+      </div>
     </article>
   );
 }
 
-const Slide = ({ children }: PropsWithChildren<{}>) => {
-  return <section className="carousel__slide">{children}</section>;
+interface ICarouselSlide extends PropsWithChildren<WithClassname> {}
+
+const Slide = ({ className, children }: ICarouselSlide) => {
+  return (
+    <section className={twMerge("h-full w-full flex-none", className)}>
+      {children}
+    </section>
+  );
 };
 
 Carousel.Slide = Slide;
