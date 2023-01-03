@@ -12,6 +12,7 @@ import { devices } from "@playwright/test";
  */
 const config: PlaywrightTestConfig = {
   testDir: "./src",
+  testMatch: "**/*.test.e2e.ts",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
