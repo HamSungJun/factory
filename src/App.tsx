@@ -1,39 +1,45 @@
 import "@app/index.css";
-import { ChangeEventHandler, useState } from "react";
-
-import Button from "@app/components/Button";
-import Radio from "@app/components/Radio";
-
-const RADIO_ITEMS = [
-  { value: "Apple" },
-  { value: "Peach" },
-  { value: "Grape" },
-];
+import useModal from "@app/components/Modal/useModal";
 
 export default function App() {
-  const [checkedRadioValue, setCheckedRadioValue] = useState(
-    RADIO_ITEMS[0].value
-  );
-
-  const handleChangeRadio: ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(event.target.value);
-    setCheckedRadioValue(event.target.value);
-  };
-
+  const { openModal } = useModal();
   return (
     <div>
-      <Button>Button</Button>
-      {RADIO_ITEMS.map(({ value }) => (
-        <Radio
-          key={value}
-          name="fruit"
-          value={value}
-          checked={checkedRadioValue === value}
-          onChange={handleChangeRadio}
-        >
-          {value}
-        </Radio>
-      ))}
+      <button
+        onClick={() => {
+          openModal({ Component: Dummy });
+        }}
+      >
+        open Modal
+      </button>
     </div>
   );
 }
+
+const Dummy = () => {
+  const { openModal } = useModal();
+  return (
+    <div className="h-[300px] w-[500px] bg-white">
+      <div>Head</div>
+      <div>Body</div>
+      <div>Footer</div>
+      <button
+        onClick={() => {
+          openModal({ Component: Dummy2 });
+        }}
+      >
+        openModal
+      </button>
+    </div>
+  );
+};
+
+const Dummy2 = () => {
+  return (
+    <div className="h-[200px] w-[400px] bg-blue-500">
+      <div>Head</div>
+      <div>Body</div>
+      <div>Footer</div>
+    </div>
+  );
+};
