@@ -3,21 +3,18 @@ import useModal from "@app/components/Modal/useModal";
 
 export default function App() {
   const { openModal } = useModal();
+  const showDummy = () => {
+    openModal({ Component: Dummy });
+  };
   return (
     <div>
-      <button
-        onClick={() => {
-          openModal({ Component: Dummy });
-        }}
-      >
-        open Modal
-      </button>
+      <button onClick={showDummy}>open Modal</button>
     </div>
   );
 }
 
 const Dummy = () => {
-  const { openModal } = useModal();
+  const { openModal, closeModal } = useModal();
   return (
     <div className="h-[300px] w-[500px] bg-white">
       <div>Head</div>
@@ -29,6 +26,13 @@ const Dummy = () => {
         }}
       >
         openModal
+      </button>
+      <button
+        onClick={() => {
+          closeModal(1);
+        }}
+      >
+        closeModal
       </button>
     </div>
   );

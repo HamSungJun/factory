@@ -24,6 +24,7 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "prettier", "import"],
   rules: {
+    "react/display-name": 0,
     "react/react-in-jsx-scope": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

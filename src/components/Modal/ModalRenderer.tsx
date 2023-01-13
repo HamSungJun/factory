@@ -14,13 +14,7 @@ export default function ModalRenderer() {
       {modals.length > 0 && (
         <>
           <ModalOverlay />
-          <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
-            {modals.map(({ Component, props }, index) => (
-              <ModalPanel key={index}>
-                <Component {...props} />
-              </ModalPanel>
-            ))}
-          </div>
+          <ModalStack>{modals}</ModalStack>
         </>
       )}
     </>
@@ -33,6 +27,10 @@ const ModalOverlay = () => {
   );
 };
 
-const ModalPanel = ({ children }: PropsWithChildren<{}>) => {
-  return <div className="absolute">{children}</div>;
+const ModalStack = ({ children }: PropsWithChildren<{}>) => {
+  return (
+    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+      {children}
+    </div>
+  );
 };
