@@ -19,6 +19,7 @@
     "immer": "^9.0.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.7.0",
     "react-transition-group": "^4.4.5",
     "tailwind-merge": "^1.8.1"
   },

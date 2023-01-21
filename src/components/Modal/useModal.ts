@@ -7,6 +7,7 @@ import {
 
 export default function useModal() {
   const { modals } = useContext(ModalStateContext);
-  const { openModal, closeModal } = useContext(ModalDispatchContext);
-  return { modals, openModal, closeModal };
+  const { openModal, closeModal, deleteModal } =
+    useContext(ModalDispatchContext);
+  return { modals, openModal, closeModal, deleteModal };
 }

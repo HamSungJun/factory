@@ -1,5 +1,12 @@
 import { produce } from "immer";
-import { PropsWithChildren, useMemo, useState, createRef } from "react";
+import {
+  PropsWithChildren,
+  useMemo,
+  useState,
+  createRef,
+  useEffect,
+} from "react";
+import { useLocation } from "react-router-dom";
 
 import {
   ModalStateContext,
@@ -13,6 +20,7 @@ import {
 import { NOOP, generateModalId } from "@app/components/Modal/utils";
 
 export default function ModalProvider({ children }: PropsWithChildren<{}>) {
+  const location = useLocation();
   const [modalState, setModalState] = useState<IModalStateContext>({
     modals: [],
   });
@@ -51,10 +59,25 @@ export default function ModalProvider({ children }: PropsWithChildren<{}>) {
         ) as any;
         modal.ref.current.close();
       },
-      deleteModal() {},
+      deleteModal(modalId) {
+        setModalState((prevModalState) => {
+          return produce(prevModalState, (draft) => {
+            draft.modals = draft.modals.filter(
+              (modal) => modal.key !== modalId.toString()
+            );
+          });
+        });
+      },
+      deleteAllModal() {
+        setModalState({ modals: [] });
+      },
     }),
     [modalState]
   );
+
+  useEffect(() => {
+    modalDispatch.deleteAllModal();
+  }, [location.pathname, modalDispatch]);
 
   return (
     <ModalDispatchContext.Provider value={modalDispatch}>

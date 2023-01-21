@@ -14,6 +14,7 @@ import {
   FADE_TRANSITION_STYLES,
 } from "@app/components/Modal/constants";
 import { IExtendedModalItem, IModalRef } from "@app/components/Modal/types";
+import useModal from "@app/components/Modal/useModal";
 
 interface IModalPanel
   extends PropsWithChildren<
@@ -22,11 +23,12 @@ interface IModalPanel
 
 const ModalPanel = forwardRef<IModalRef, IModalPanel>(
   ({ modalProps, modalHooks, children }, ref) => {
-    console.log(modalProps);
+    const { modalId } = modalProps;
     const { beforeOpen, afterOpen, beforeClose, afterClose } = modalHooks;
 
     const [inProp, setInProp] = useState(false);
     const nodeRef = useRef<HTMLDivElement>(null);
+    const { deleteModal } = useModal();
 
     const close = () => {
       setInProp(false);
@@ -34,7 +36,7 @@ const ModalPanel = forwardRef<IModalRef, IModalPanel>(
 
     const onCloseEnd = () => {
       afterClose();
-      // TODO: delete current modalRef from modalRefs
+      deleteModal(modalId);
     };
 
     useImperativeHandle(ref, () => ({ close }));
@@ -64,6 +66,9 @@ const ModalPanel = forwardRef<IModalRef, IModalPanel>(
             }}
             className="absolute"
           >
+            <div>
+              <button onClick={close}>close</button>
+            </div>
             {children}
           </div>
         )}

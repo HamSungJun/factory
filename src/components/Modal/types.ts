@@ -7,6 +7,8 @@ export interface IModalStateContext {
 export interface IModalDispatchContext {
   openModal: (item: IModalItem) => number;
   closeModal: (modalId: number) => void;
+  deleteModal: (modalId: number) => void;
+  deleteAllModal: () => void;
 }
 
 export interface IModalItem<T = any> {

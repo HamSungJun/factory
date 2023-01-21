@@ -13,4 +13,6 @@ export const ModalDispatchContext = createContext<IModalDispatchContext>({
     return 0;
   },
   closeModal() {},
+  deleteModal() {},
+  deleteAllModal() {},
 });
