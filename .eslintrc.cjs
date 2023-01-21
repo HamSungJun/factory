@@ -24,6 +24,7 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "prettier", "import"],
   rules: {
+    "react/display-name": 0,
     "react/react-in-jsx-scope": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
@@ -31,6 +32,9 @@ module.exports = {
     "@typescript-eslint/triple-slash-reference": 0,
     "@typescript-eslint/consistent-type-assertions": 0,
     "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/ban-types": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-explicit-any": 0,
     "import/order": [
       "warn",
       {
